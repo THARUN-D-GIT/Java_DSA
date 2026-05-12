@@ -2,7 +2,7 @@ package Array;
 
 import java.util.Scanner;
 
-public class Search_In_array {
+public class Linear_Search {
     static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
         System.out.println("enter the size of the array");
