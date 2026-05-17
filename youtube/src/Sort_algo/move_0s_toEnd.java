@@ -22,7 +22,7 @@ public class move_0s_toEnd {
         }
         print(arr);
         System.out.println();
-      for(int i=0;i<n;i++){
+      /*for(int i=0;i<n;i++){
             for(int j=0;j<n-1;j++){
                 if(arr[j]==0){
                     int  temp=arr[j];
@@ -32,6 +32,9 @@ public class move_0s_toEnd {
             }
         }
 
+       */
+
+
 
        /* for(int i=0;i<n-1;i++){
             if(arr[i]==0){
@@ -40,8 +43,23 @@ public class move_0s_toEnd {
                 arr[i+1]=temp;
             }
         }
+        Optimised  version uses sliding window concept
+        2 pointer techniques both  are at starting index only
 
         */
+        int j=0;
+        for(int i=0;i<n;i++){
+            if(arr[i]!=0){
+                if(i!=j){
+                    int temp=arr[i];
+                    arr[i]=arr[j];
+                    arr[j]=temp;
+                }
+                j++;
+
+            }
+
+        }
         print(arr);
     }
     static void print(int[] arr){
