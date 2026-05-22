@@ -52,7 +52,7 @@ Constraints:
 
             }
         }
-        if(flag==true){
+        if(flag){
             System.out.println("Target found at first occurance:"+idx);
         }
         else {
