@@ -2,55 +2,49 @@ package Binary_Search;
 
 public class Maximun_pso_neg_count {
     static void main(String[] args) {
-        int[] nums = {-5, -4, -2, 0, 1, 2, 3};
+       int [] arr ={-5,-4,-3,-1,0,0,0,1,2,6,8,9,10};
+       int n = arr.length;
+       int poscnt=0,negcnt=0;
+       for(int elem:arr){
+           if(elem>0) poscnt++;
+           else if(elem<0) negcnt++;
+       }
+        System.out.println("maximum count of neg and pos in the array is:");
+       //which no have appeared more pos or neg
+        System.out.println(Math.max(poscnt,negcnt));
+        //using Binary search method
+        System.out.println("using Binary search method");
+        int lo=0,hi=n-1;
+        int ps=0,ne=0;
+        // Binary Search to count negative number
+        while(lo<=hi){
+            int mid=lo+(hi-lo)/2;
+            if(arr[mid]>=0){
+                hi=mid-1;
 
-        Maximun_pso_neg_count  obj = new Maximun_pso_neg_count();
-
-        int ans = obj.maximumCount(nums);
-
-        System.out.println(ans);
-
-    }
-    public int maximumCount(int[] nums) {
-
-        int n = nums.length;
-
-        // count negatives
-        int low = 0, high = n - 1;
-        int neg = 0;
-
-        while(low <= high){
-
-            int mid = (low + high) / 2;
-
-            if(nums[mid] < 0){
-                neg = mid + 1;
-                low = mid + 1;
             }
-            else{
-                high = mid - 1;
+            else {
+                lo=mid+1;
+
             }
         }
+        ne=lo;
+        lo=0;
+        hi=n-1;
+        while(lo<=hi){
+            int mid=lo+(hi-lo)/2;
+            if(arr[mid]<=0){
+               lo=mid+1;
 
-        // count positives
-        low = 0;
-        high = n - 1;
-
-        int pos = 0;
-
-        while(low <= high){
-
-            int mid = (low + high) / 2;
-
-            if(nums[mid] > 0){
-                pos = n - mid;
-                high = mid - 1;
             }
-            else{
-                low = mid + 1;
+            else {
+                hi=mid-1;
+
             }
         }
+        ps=n-lo;
 
-        return Math.max(neg, pos);
+        System.out.println("maximum count of neg and pos in the array is:");
+        System.out.println(Math.max(ps,ne));
     }
 }
