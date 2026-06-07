@@ -19,6 +19,8 @@ Explanation: The first letter (A) is uppercase. Hence, the complete string is ma
         System.out.println(change(s1));
         System.out.println(change(s2));
 
+
+
     }
     public static String change(String s){
         if(!s.isEmpty() && Character.isLowerCase(s.charAt(0)))
