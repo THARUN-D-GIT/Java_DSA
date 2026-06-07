@@ -24,5 +24,6 @@ public class BuiltInMethod {
 
         //start with and endswith
         System.out.println(s1.startsWith("a"));
+
     }
 }
