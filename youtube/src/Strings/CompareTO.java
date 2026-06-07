@@ -14,10 +14,28 @@ public class CompareTO {
        output will be the difference between first different character between
        2 String
         */
-        String s1="raghav";
-        String s2="rajeev ";
+        String s1 = "harshitha";
+        String s2 = "harsh ";
         System.out.println(s1.compareTo(s2));
         System.out.println(s2.compareTo(s1));
+        System.out.println(compare_to(s1,s2));
 
     }
+        //HW:create a compareto function of ur own
+        static int compare_to(String s1,String s2){
+           int n1=s1.length();
+           int n2=s2.length();
+           int i=0,j=0;
+           while(i<n1 && i<n2){
+               if(s1.charAt(i)!=s2.charAt(j)){
+                   return s1.charAt(i)-s2.charAt(j);
+               }
+               i++;
+               j++;
+
+           }
+           return n1-n2;
+        }
+
+
 }
