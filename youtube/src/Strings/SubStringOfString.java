@@ -20,8 +20,9 @@ public class SubStringOfString {
         for(int i=0;i<str2.length();i++){
             for(int j=i;j<str2.length();j++){
 
-                System.out.println(str2.substring(i,j+1));
+                System.out.print(str2.substring(i,j+1)+" ");
             }
+            System.out.println();
         }
     }
 }
