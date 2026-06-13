@@ -15,7 +15,7 @@ public class CompareTO {
        2 String
         */
         String s1 = "harshitha";
-        String s2 = "harsh ";
+        String s2 = "harsh";
         System.out.println(s1.compareTo(s2));
         System.out.println(s2.compareTo(s1));
         System.out.println(compare_to(s1,s2));

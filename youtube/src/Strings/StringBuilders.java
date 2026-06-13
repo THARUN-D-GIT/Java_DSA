@@ -33,7 +33,8 @@ public class StringBuilders {
         System.out.println(s+" "+s.capacity());
         sb.setCharAt(2,'j');
         System.out.println(sb);
-        //sb.deleteCharAt(6);
+        //
+        // sb.deleteCharAt(6);
 
     }
 }
