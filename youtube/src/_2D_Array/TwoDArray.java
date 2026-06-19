@@ -34,11 +34,31 @@ public class TwoDArray {
             System.out.println();
         }
 
-        for(int i=0;i<arr.length;i++){
-            for(int j=0;j<arr[i].length;j++){
-                System.out.print(arr[i][j]+" ");
+        for(int i=0;i<arr.length;i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                System.out.print(arr[i][j] + " ");
             }
             System.out.println();
+        }
+            /*
+            2QUESTIONS
+            1.PRINT SUM OF ALL THE ELEMENTS OF THE ARRAY
+            2.PRINT THE SUM OF INDIVIDUAL ROWS
+             */
+            int sum=0;
+            int sum1=0;
+            for(int i=0;i<arr.length;i++){
+                for(int j=0;j<arr[i].length;j++){
+                    sum+=arr[i][j];
+                    sum1+=arr[i][j];
+                   // System.out.println("sum of"+i+"th Row elemnts:"+sum1);
+                    //sum1=0;
+                }
+                System.out.println("sum of"+i+"th Row elemnts:"+sum1);
+                sum1=0;
+                System.out.println();
+
     }
+            System.out.println("sum of all elements:"+sum);
 }
 }
