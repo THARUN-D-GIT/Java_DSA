@@ -3,6 +3,7 @@ package Recursion;
 import java.util.Scanner;
 
 public class Basic {
+    static int n=10;
     static void main(String[] args) {
         /*
         RECURSION:
@@ -18,23 +19,34 @@ public class Basic {
         //question print  numbers from reverse order
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("enter the number");
-        int n = sc.nextInt();
-        System.out.println("last number u want to print in forward continous print");
-        int s = sc.nextInt();
+//        System.out.println("enter the number");
+//        int n = sc.nextInt();
+//        System.out.println("last number u want to print in forward continous print");
+//        int s = sc.nextInt();
         print(n);
-        System.out.println();
-        prints(n,s);
+//        System.out.println();
+//        prints(n,s);
 
     }
     public static void print(int n){
+        int s=0;
+//        if(n==0) return;
+//        System.out.print(n+" ");
+//        print(n-1);
+        //method 2 using global variable
+//        if(n==0) return;
+//        System.out.println(n);
+//        print(n-1);
+        //method 3 using call back
         if(n==0) return;
-        System.out.print(n+" ");
         print(n-1);
+        System.out.println(n+" ");
+        // DRY RUN THIS ONCE
+
     }
-    public static void prints(int n,int s){
-        if(n>s) return;
-        System.out.print(n+" ");
-        prints(n+1,s);
-    }
+//    public static void prints(int n,int s){
+//        if(n>s) return;
+//        System.out.print(n+" ");
+//        prints(n+1,s);
+//    }
 }
