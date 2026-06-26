@@ -1,5 +1,7 @@
 package Recursion;
 
+import java.util.Scanner;
+
 public class Basic {
     static void main(String[] args) {
         /*
@@ -14,12 +16,25 @@ public class Basic {
 
          */
         //question print  numbers from reverse order
-        print(5);
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("enter the number");
+        int n = sc.nextInt();
+        System.out.println("last number u want to print in forward continous print");
+        int s = sc.nextInt();
+        print(n);
+        System.out.println();
+        prints(n,s);
 
     }
     public static void print(int n){
         if(n==0) return;
-        System.out.println(n);
+        System.out.print(n+" ");
         print(n-1);
+    }
+    public static void prints(int n,int s){
+        if(n>s) return;
+        System.out.print(n+" ");
+        prints(n+1,s);
     }
 }
