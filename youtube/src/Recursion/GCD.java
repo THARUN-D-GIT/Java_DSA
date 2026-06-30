@@ -38,7 +38,10 @@ public class GCD {
 
          */
         //using recursion
+
         System.out.println(gcd(n1,n2));
+        int lcm=(n1*n2)/gcd(n1,n2);
+        System.out.println(lcm);
     }
     public static int gcd(int a,int b){
         if(a==0) return b;

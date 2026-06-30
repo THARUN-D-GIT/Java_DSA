@@ -8,9 +8,9 @@ public class Fibbonaci_Number {
         System.out.print("Enter a number : ");
         int n=sc.nextInt();
         //using object creation
-       // Fibbonaci_Number f=new Fibbonaci_Number ();
+       // Fibonacci_Number f=new Fibonacci_Number ();
         //f.fib
-        //System.out.println("fibonacci sequence sum untill:"+n+" is: "+f.fib(n));
+        //System.out.println("Fibonacci sequence sum until:"+n+" is: "+f.fib(n));
 
         //using for loop
          int a=0,b=1;
