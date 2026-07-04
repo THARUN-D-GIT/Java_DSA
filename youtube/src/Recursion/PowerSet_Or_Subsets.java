@@ -1,4 +1,5 @@
 package Recursion;
+import java.util.*;
 
 public class PowerSet_Or_Subsets {
     static void main(String[] args) {
@@ -15,18 +16,21 @@ public class PowerSet_Or_Subsets {
 
          */
         String s="abc";
-        subset("",s,0);  // ans="" empty string
-        //s string,0 starting index
+        List<String> list=new ArrayList<>();
+
+        subset("",s,0,list);
+        Collections.sort(list);
+        System.out.println(list);
+
     }
-    public static void subset(String ans,String s,int idx)
+    public static void subset(String ans,String s,int idx, List<String> list)
     {
         if(idx==s.length()) {
-
-            System.out.print(ans+" ");
-            return;
+           if(ans.length()!=1)  list.add(ans);
+           return;
         }
             char ch=s.charAt(idx);
-            subset(ans+ch,s,idx+1); //pick
-            subset(ans,s,idx+1);  //skip
+            subset(ans+ch,s,idx+1,list); //pick
+            subset(ans,s,idx+1,list);
     }
 }
