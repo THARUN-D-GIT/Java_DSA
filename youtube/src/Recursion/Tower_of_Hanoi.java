@@ -1,6 +1,7 @@
 package Recursion;
 
 public class Tower_of_Hanoi {
+    public static int count=0;
     static void main(String[] args) {
         /*
         moving all the disc from tower A ->Tower c
@@ -23,6 +24,7 @@ public class Tower_of_Hanoi {
                     3.move n-1 disc from B->c via A
          */
         hanoi(5,'A','B','C');
+        System.out.println("total number of steps are: "+count);
     }
     public static void hanoi(int n,char src,char help,char dest)
     {
@@ -32,6 +34,7 @@ public class Tower_of_Hanoi {
         hanoi(n-1,src,dest,help);
        // move the largest disc from A to C
         System.out.println(n+"->"+src+"->"+dest);
+        count++;
         //move n-1 disc from B->c via A
         hanoi(n-1,help,src,dest);
     }
