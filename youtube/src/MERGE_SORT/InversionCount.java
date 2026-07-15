@@ -9,7 +9,7 @@ public class InversionCount {
 
     static long mergeSort(int[] arr, int lo, int hi) {
 
-        if (lo >= hi)
+        if (lo >= hi)  hi
             return 0;
 
         int mid = lo + (hi - lo) / 2;
