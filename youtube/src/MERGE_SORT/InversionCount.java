@@ -83,7 +83,7 @@ public class InversionCount {
    public static void merge_sort(int [] arr)
    {
        int n=arr.length;
-       if(n==1) return;
+       if(n<=1) return;
        int [] a=new int[n/2];
        int [] b=new int[n-(n/2)];
        int idx=0;
@@ -101,7 +101,7 @@ public class InversionCount {
    {
        int i=0,j=0,k=0;
        while(i<a.length && j<b.length){
-           if(a[i]<b[j]){
+           if(a[i]<=b[j]){
                arr[k++]=a[i++];
            }
            else {//if a[i]>b[j} the inversion exists for all next elements
