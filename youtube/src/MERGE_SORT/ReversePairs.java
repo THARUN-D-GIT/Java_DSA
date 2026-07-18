@@ -1,74 +1,77 @@
 package MERGE_SORT;
 
 public class ReversePairs {
+        static int count;
 
-    public int reversePairs(int[] nums) {
-        return mergeSort(nums, 0, nums.length - 1);
+        public static int reversePairs(int[] nums) {
+            count = 0;
+            merge_sort(nums);
+            return count;
+        }
+
+    static void main(String[] args) {
+            int [] arr={1,4,5,6,2};
+        System.out.println(reversePairs(arr));
     }
 
-    static int mergeSort(int[] arr, int lo, int hi) {
+        public static void merge_sort(int[] arr) {
 
-        if (lo >= hi)
-            return 0;
+            if (arr.length <= 1)
+                return;
 
-        int mid = lo + (hi - lo) / 2;
+            int mid = arr.length / 2;
 
-        int count = 0;
+            int[] left = new int[mid];
+            int[] right = new int[arr.length - mid];
 
-        count += mergeSort(arr, lo, mid);
-        count += mergeSort(arr, mid + 1, hi);
+            for (int i = 0; i < mid; i++)
+                left[i] = arr[i];
 
-        // Count reverse pairs
-        int j = mid + 1;
+            for (int i = mid; i < arr.length; i++)
+                right[i - mid] = arr[i];
 
-        for (int i = lo; i <= mid; i++) {
+            merge_sort(left);
+            merge_sort(right);
 
-            while (j <= hi && (long) arr[i] > 2L * arr[j]) {
-                j++;
+            inversion(left, right);
+
+            merger(left, right, arr);
+        }
+
+        public static void inversion(int[] left, int[] right) {
+
+            int i = 0;
+            int j = 0;
+
+            while (i < left.length && j < right.length) {
+
+                if ((long) left[i] > 2L * right[j]) {
+                    count += (left.length - i);
+                    j++;
+                } else {
+                    i++;
+                }
+            }
+        }
+
+        public static void merger(int[] left, int[] right, int[] arr) {
+
+            int i = 0, j = 0, k = 0;
+
+            while (i < left.length && j < right.length) {
+
+                if (left[i] <= right[j]) {
+                    arr[k++] = left[i++];
+                } else {
+                    arr[k++] = right[j++];
+                }
             }
 
-            count += j - (mid + 1);
-        }
+            while (i < left.length)
+                arr[k++] = left[i++];
 
-        merge(arr, lo, mid, hi);
-
-        return count;
-    }
-
-    static void merge(int[] arr, int lo, int mid, int hi) {
-
-        int[] temp = new int[hi - lo + 1];
-
-        int i = lo;
-        int j = mid + 1;
-        int k = 0;
-
-        while (i <= mid && j <= hi) {
-
-            if (arr[i] <= arr[j]) {
-                temp[k++] = arr[i++];
-            } else {
-                temp[k++] = arr[j++];
-            }
-        }
-
-        while (i <= mid)
-            temp[k++] = arr[i++];
-
-        while (j <= hi)
-            temp[k++] = arr[j++];
-
-        for (int x = 0; x < temp.length; x++) {
-            arr[lo + x] = temp[x];
+            while (j < right.length)
+                arr[k++] = right[j++];
         }
     }
 
-    public static void main(String[] args) {
-
-        int[] arr = {1, 3, 2, 3, 1};
-
-        ReversePairs obj = new ReversePairs();
-
-        System.out.println(obj.reversePairs(arr));
-    }
-}
