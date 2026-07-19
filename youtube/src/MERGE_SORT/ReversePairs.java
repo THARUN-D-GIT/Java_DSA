@@ -2,76 +2,69 @@ package MERGE_SORT;
 
 public class ReversePairs {
         static int count;
-
-        public static int reversePairs(int[] nums) {
-            count = 0;
-            merge_sort(nums);
-            return count;
-        }
-
-    static void main(String[] args) {
-            int [] arr={1,4,5,6,2};
+        static void main(String[] args) {
+            int [] arr={2,4,3,5,1};
         System.out.println(reversePairs(arr));
     }
+        //static int count;
+        public static  int reversePairs(int[] nums) {
+            count=0;
+            merge_sort(nums);
+            return count;
 
-        public static void merge_sort(int[] arr) {
-
-            if (arr.length <= 1)
-                return;
-
-            int mid = arr.length / 2;
-
-            int[] left = new int[mid];
-            int[] right = new int[arr.length - mid];
-
-            for (int i = 0; i < mid; i++)
-                left[i] = arr[i];
-
-            for (int i = mid; i < arr.length; i++)
-                right[i - mid] = arr[i];
-
-            merge_sort(left);
-            merge_sort(right);
-
-            inversion(left, right);
-
-            merger(left, right, arr);
         }
-
-        public static void inversion(int[] left, int[] right) {
-
-            int i = 0;
-            int j = 0;
-
-            while (i < left.length && j < right.length) {
-
-                if ((long) left[i] > 2L * right[j]) {
-                    count += (left.length - i);
-                    j++;
-                } else {
-                    i++;
-                }
+        public static void inversion(int [] a,int [] b)
+        {
+            int i=0,j=0;
+            while(i<a.length && j<b.length)
+            {
+                if((long)a[i]>(long) 2*b[j])
+                    count+=(a.length-i);
+                j++;
             }
+            i++;
         }
-
-        public static void merger(int[] left, int[] right, int[] arr) {
-
-            int i = 0, j = 0, k = 0;
-
-            while (i < left.length && j < right.length) {
-
-                if (left[i] <= right[j]) {
-                    arr[k++] = left[i++];
-                } else {
-                    arr[k++] = right[j++];
-                }
+        public static void merge_sort(int [] arr)
+        {
+            int n=arr.length;
+            if(n<=1) return;
+            int [] a=new int[n/2];
+            int [] b=new int[n-(n/2)];
+            int idx=0;
+            for(int i=0;i<a.length;i++){
+                a[i]=arr[idx++];
             }
+            for(int i=0;i<b.length;i++){
+                b[i]=arr[idx++];
+            }
+            merge_sort(a);
+            merge_sort(b);
+            inversion(a,b);
+            merger(a,b,arr);
+        }
+        public static void merger(int [] a,int [] b,int [] arr)
+        {
+            int i=0,j=0,k=0;
+            while(i<a.length && j<b.length){
+                if(a[i]<=b[j]){
+                    arr[k++]=a[i++];
+                }
+                else {//if a[i]>b[j} the inversion exists for all next elements
+                    //for this also same as inversion count use one extra function to //caluclate reverse pair counts and then apply the condition
+                    //    if(a[i]>2*b[j])
+                    //        count+=(a.length-i);
+                    arr[k++] = b[j++];
 
-            while (i < left.length)
-                arr[k++] = left[i++];
+                }
 
-            while (j < right.length)
-                arr[k++] = right[j++];
+            }
+            while(i<a.length){
+                arr[k++]=a[i++];
+            }
+            while(j<b.length){
+                arr[k++]=b[j++];
+            }
         }
     }
+
 
