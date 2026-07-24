@@ -12,6 +12,19 @@ class Student {
         //System.out.println(name+" "+cgpa+" "+rno);
         print();
     }
+    //getter and setter
+    /*
+    getter is used to get the data from private class or variable
+    setter :used to modify the private attribute
+     */
+    int  getrno()
+    {
+       return rno;
+    }
+    void setrno( int x)
+    {
+        rno=x;
+    }
 }
 
 public class AccessModifier {
@@ -34,6 +47,8 @@ public class AccessModifier {
         INT=0,STRING=NULL
 
          */
+        System.out.println(s.getrno());
+        s.setrno(45);
         s.print2();
 
     }
