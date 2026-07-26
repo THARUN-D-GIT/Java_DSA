@@ -46,6 +46,16 @@ public class oops_ex {
         static:
         variables which can be shared between classes and methods
          */
+        print();
+       //  print2();  error because the method is not static and can not be shared
+    }
+    public static void print()
+    {
+        System.out.println("hello world");
 
+    }
+    public  void print2()
+    {
+        System.out.println("hello world");
     }
 }
