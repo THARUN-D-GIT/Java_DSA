@@ -58,10 +58,14 @@ public class Fractional {
         return hcf(b%a,a);
     }
     void simplify()
-    {
+    { // for negative value
+        boolean isneg=(num*den<0) ? true : false;
+        num=Math.abs(num);
+        den=Math.abs(den);
         int gcd=hcf(this.num,this.den);
         this.num=this.num/gcd;
         this.den=this.den/gcd;
+        if(isneg) num=-num;
     }
     void print(){
         System.out.println(num+"/"+den);
@@ -71,7 +75,7 @@ public class Fractional {
         Fractional f2=new Fractional(6,8);
         Fractional f3=new Fractional(7,5);
         Fractional f4=new Fractional(11,8);
-        Fractional f5=new Fractional(13,7);
+        Fractional f5=new Fractional(13,-7);
         Fractional f6=new Fractional(17,8);
         Fractional f7=new Fractional(15,7);
         Fractional f8=new Fractional(19,12);
