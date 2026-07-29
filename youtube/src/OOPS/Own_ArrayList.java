@@ -42,6 +42,14 @@ class Arraylist
     int get(int index){
         return arr[index];
     }
+    void remove(int index){
+        arr[index]=arr[index+1];
+        idx--;
+
+    }
+    void insert(int index,int value){
+        arr[index]=value;
+    }
 
 }
 
@@ -58,6 +66,8 @@ public class Own_ArrayList {
         System.out.println(arr.get(3));
         arr.set(6,98);
         arr.display();
+        arr.insert(3,35);
+        arr.remove(4);
 
     }
 }
