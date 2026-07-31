@@ -43,6 +43,27 @@ class LinkedList{
        if(head==null) tail=null;
        size--;
    }
+//   Boolean search(int value){
+//        if(head==null) return false;
+//        Node temp=head;
+//       while(temp!=null){
+//           if(temp.val==value) return true;
+//           temp=temp.next;
+//       }
+//       return false;
+//   }
+   int search(int value)
+   {
+       if(head==null) return -1;
+       Node temp=head;
+       int idx=0;
+       while(temp!=null){
+           if(temp.val==value) return idx;
+           idx++;
+           temp=temp.next;
+       }
+       return -1;
+   }
 }
 public class LinkedListDataStructure {
     static void main(String[] args) {
@@ -59,5 +80,7 @@ ll.deleteAtHead();
         ll.deleteAtHead();
         ll.display();
         System.out.println("size of linked list "+ll.size);
+        System.out.println(ll.search(40));
+
     }
 }

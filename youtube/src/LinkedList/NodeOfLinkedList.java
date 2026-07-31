@@ -1,6 +1,6 @@
 package LinkedList;
 
-import java.util.LinkedList;
+//import java.util.LinkedList;
 
 class Node{
     int val;
