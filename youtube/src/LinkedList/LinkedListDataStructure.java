@@ -43,15 +43,15 @@ class LinkedList{
        if(head==null) tail=null;
        size--;
    }
-//   Boolean search(int value){
-//        if(head==null) return false;
-//        Node temp=head;
-//       while(temp!=null){
-//           if(temp.val==value) return true;
-//           temp=temp.next;
-//       }
-//       return false;
-//   }
+   Boolean search2(int value){
+        if(head==null) return false;
+        Node temp=head;
+       while(temp!=null){
+           if(temp.val==value) return true;
+           temp=temp.next;
+       }
+       return false;
+   }
    int search(int value)
    {
        if(head==null) return -1;
@@ -64,6 +64,59 @@ class LinkedList{
        }
        return -1;
    }
+   void insert(int idx,int value){
+        if(head==null){addAtHead(value);}
+        else if(idx>size || idx<0)  {
+            System.out.println("Not possible");
+            return;
+        }
+        else if(idx==size){
+            addAtTail(value);
+        }
+        else {
+            Node temp=head;
+            for(int i=0;i<idx-1;i++){
+                temp=temp.next;
+            }
+            Node t=new Node(value);
+            t.next=temp.next;
+            temp.next=t;
+            size++;
+        }
+}
+int get(int idx)
+{
+    Node temp=head;
+    for(int i=0;i<idx;i++){
+        temp=temp.next;
+    }
+    return temp.val;
+}
+
+void delete(int idx)
+    {
+        Node temp=head;
+        if(head==null) {
+            System.out.println("LL is empty");
+            return;
+        }
+        else if(idx<0||idx>size){
+            System.out.println("invalid index");
+        }
+        else if(idx==0){
+            deleteAtHead();
+        }
+        else{
+            for(int i=0;i<idx-1;i++){
+                temp=temp.next;
+            }
+            temp.next=temp.next.next;
+            if(idx==size-1) tail=temp;
+            size--;
+    }
+
+    }
+
 }
 public class LinkedListDataStructure {
     static void main(String[] args) {
@@ -81,6 +134,11 @@ ll.deleteAtHead();
         ll.display();
         System.out.println("size of linked list "+ll.size);
         System.out.println(ll.search(40));
+        ll.insert(3,89);
+        ll.display();
+        System.out.println(ll.get(5));
+       ll. delete(5);
+        ll.display();
 
     }
 }
