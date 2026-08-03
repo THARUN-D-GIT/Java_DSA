@@ -1,17 +1,15 @@
 package LinkedList;
 
-public class CycleInLL {
+public class StartingNodeOfACycle {
 
     public static void main(String[] args) {
 
-        CycleInLL obj = new CycleInLL();
-        // we can increase fast by 3 ,,4,5 etc but loop condition we have to check for n-1 times for null
-        //ex n=3 fast!=null && fast.next!=null && fast.next.next!=null
+        StartingNodeOfACycle obj = new StartingNodeOfACycle();
 
         // ==========================
         // Example 1 : Cycle Present
         // ==========================
-
+        //
         // 3 -> 2 -> 0 -> -4
         //      ^         |
         //      |_________|
@@ -24,15 +22,19 @@ public class CycleInLL {
         // Create cycle
         head1.next.next.next.next = head1.next;
 
-        System.out.println("Example 1");
-        System.out.println("Cycle Present : " + obj.hasCycle(head1));
+        ListNode ans1 = obj.detectCycle(head1);
 
+        System.out.println("Example 1");
+        if (ans1 != null)
+            System.out.println("Cycle starts at node : " + ans1.val);
+        else
+            System.out.println("No Cycle");
 
 
         // ==========================
         // Example 2 : No Cycle
         // ==========================
-
+        //
         // 1 -> 2 -> 3 -> 4 -> 5 -> null
 
         ListNode head2 = new ListNode(1);
@@ -41,25 +43,38 @@ public class CycleInLL {
         head2.next.next.next = new ListNode(4);
         head2.next.next.next.next = new ListNode(5);
 
+        ListNode ans2 = obj.detectCycle(head2);
+
         System.out.println("\nExample 2");
-        System.out.println("Cycle Present : " + obj.hasCycle(head2));
+        if (ans2 != null)
+            System.out.println("Cycle starts at node : " + ans2.val);
+        else
+            System.out.println("No Cycle");
     }
 
     // LeetCode Function
-    public boolean hasCycle(ListNode head) {
+    public ListNode detectCycle(ListNode head) {
 
         ListNode slow = head;
         ListNode fast = head;
+        ListNode temp = head;
 
         while (fast != null && fast.next != null) {
 
             slow = slow.next;
             fast = fast.next.next;
 
-            if (slow == fast)
-                return true;
+            if (slow == fast) {
+
+                while (slow != temp) {
+                    slow = slow.next;
+                    temp = temp.next;
+                }
+
+                return temp;
+            }
         }
 
-        return false;
+        return null;
     }
 }
