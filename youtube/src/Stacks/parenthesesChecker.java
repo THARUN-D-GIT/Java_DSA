@@ -9,8 +9,10 @@ public class parenthesesChecker {
 
     }
     public static boolean isValid(String s) {
+        int n=s.length();
+        if(n%2==1) return false;
         Stack<Character> st = new Stack<>();
-        for(int i=0;i<s.length();i++)
+        for(int i=0;i<n;i++)
         {
             char c = s.charAt(i);
             if(c=='{'||c=='['||c=='(')
@@ -27,7 +29,8 @@ public class parenthesesChecker {
                 else return false;
             }
         }
-        return true;
+        return (st.size()==0);
+        // is ame as if size==0 true else false
 
     }
     public static  boolean SameStyle(char a,char b)
