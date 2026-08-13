@@ -30,6 +30,8 @@ public class ReverseOfStack {
             st.push(arr[i++]);
         }
 
+
+
     }
     //method to print stack without using inbuild function
     public static void print(Stack<Integer> st) {
