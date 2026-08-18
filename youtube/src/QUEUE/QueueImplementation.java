@@ -76,6 +76,7 @@ public class QueueImplementation {
         System.out.println(q.peek());
         System.out.println(q.remove());
         q.print();
+        System.out.println(q.size());
 
 
     }
