@@ -1,81 +1,77 @@
 package QUEUE;
 import java.util.*;
-class MyQueue {
-    Stack<Integer>st;
-    Stack<Integer> help;
+class MyStack {
+    Queue<Integer> q;
 
-
-    public MyQueue() {
-        st=new Stack<>();
-        help=new Stack<>();
-
+    public MyStack() {
+        q=new LinkedList<>();
     }
+    //ADD  EFFICIENT
 
     // public void push(int x) {
-    //     st.push(x);
+    //     q.add(x);
 
     // }
 
     // public int pop() {
-    //     // push n-1 element form main to helper except bottom
-    //     while(st.size()>1) help.push(st.pop());
-    //     int ans=st.pop();
-    //     //push back
-    //     while(!(help.isEmpty())) st.push(help.pop());
+    //     int n=q.size();
+    //     for(int i=0;i<n-1;i++) q.add(q.remove());
+    //     int ans=q.remove();
     //     return ans;
 
     // }
 
-    // public int peek() {
-    //      // push n-1 element form main to helper except bottom
-    //     while(st.size()>1) help.push(st.pop());
-    //     int ans=st.peek();
-    //     //push back
-    //     while(!(help.isEmpty())) st.push(help.pop());
+    // public int top() {
+    //     int n=q.size();
+    //     for(int i=0;i<n-1;i++) q.add(q.remove());
+    //     int ans=q.remove();
+    //     q.add(ans);
     //     return ans;
     // }
 
     // public boolean empty() {
-    //     if(st.isEmpty()) return true;
+    //     if(q.isEmpty()) return true;
     //     return false;
 
     // }
+
+    //REMOVE EFFICIENT
     public void push(int x) {
-        while(!(st.isEmpty())) help.push(st.pop());
-        st.push(x);
-        while(!(help.isEmpty())) st.push(help.pop());
+        q.add(x);
+
+        // remove and add for q.size-1
+        int n=q.size();
+        for(int i=0;i<n-1;i++) q.add(q.poll());
 
     }
 
     public int pop() {
-        int ans=st.pop();
-        return ans;
+        return q.remove();
 
     }
 
-    public int peek() {
-        return st.peek();
+    public int top() {
+        return q.peek();
     }
 
     public boolean empty() {
-        if(st.isEmpty()) return true;
+        if(q.isEmpty()) return true;
         return false;
 
     }
 }
 
 
-
 public class ImplementationOfStackUsingQueue {
     static void main(String[] args) {
-        //["MyQueue","push","push","peek","pop","empty"]
-        MyQueue q = new MyQueue();
-        System.out.println(q.empty());
-        q.push(1);
-        q.push(2);
-        System.out.println( q.peek());
-        System.out.println( q.pop());
-        System.out.println(q.empty());
+        //["MyStack","push","push","top","pop","empty"]
+        MyStack s=new MyStack();
+        System.out.println(s.empty());
+        s.push(1);
+        s.push(2);
+        System.out.println(s.top());
+        System.out.println(s.pop());
+        System.out.println(s.empty());
 
     }
 }
