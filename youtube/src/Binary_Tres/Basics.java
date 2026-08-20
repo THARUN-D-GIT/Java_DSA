@@ -38,6 +38,8 @@ public class Basics {
         Node b=new Node(2);
         Node c=new Node(3);
         Node d=new Node(4);
+//        for non zero we r using 0
+//        Node d=new Node(0);
         Node e=new Node(5);
         Node f=new Node(6);
         Node g=new Node(7);
@@ -55,7 +57,10 @@ not necessery because default values are null only
         System.out.println();
         System.out.println("size of tree is: "+size(a));
         System.out.println("sum of values is: "+sumBT(a));
-        System.out.println("product value of each node is: "+ProductBT(a));
+       System.out.println("product value of each node is: "+ProductBT(a));
+        //System.out.println("product of non zero values is: "+nonzero(a));
+        System.out.println("Max value in tree: "+findMax(a));
+        System.out.println("Min value in tree: "+findMin(a));
 
     }
     public static int size(Node root)
@@ -77,6 +82,25 @@ not necessery because default values are null only
     {
         if(root==null) return 1;
         return root.val*ProductBT(root.left)*ProductBT(root.right);
+    }
+    static int nonzero(Node root)
+    {
+        if(root==null) return 1;
+        int left=nonzero(root.left);
+        int right=nonzero(root.right);
+        if(root.val==0) return left*right;
+        else return root.val*left*right;
+    }
+    public static int findMax(Node root) {
+        // code here
+        if(root==null) return Integer.MIN_VALUE;
+        return Math.max( Math.max(root.val,findMax(root.left)) ,findMax(root.right));
+    }
+
+    public static int findMin(Node root) {
+        // code here
+        if(root==null) return Integer.MAX_VALUE;
+        return Math.min( Math.min(root.val,findMin(root.left)) ,findMin(root.right));
     }
 }
 
