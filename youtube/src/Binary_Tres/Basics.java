@@ -15,7 +15,9 @@ public class Basics {
          if(root==null) return;
          System.out.print(root.val+" ");
          display(root.left); // all left child values
-         display(root.right); // all right child values
+         display(root.right);
+
+         // all right child values
 //         display(root.left); // all left child values
 //         System.out.print(root.val+" ");
 //         display(root.right); // all right child values
@@ -50,7 +52,31 @@ not necessery because default values are null only
         f.left=f.right=null;
 */
         display(a);
-
+        System.out.println();
+        System.out.println("size of tree is: "+size(a));
+        System.out.println("sum of values is: "+sumBT(a));
+        System.out.println("product value of each node is: "+ProductBT(a));
 
     }
+    public static int size(Node root)
+    {
+        if(root==null) return 0;
+        /*
+        int leftsize=size(root.left);
+        int rightsize=size(root.right);
+        return 1+leftsize+rightsize;
+         */
+        return 1 + size(root.left) + size(root.right);
+    }
+    static int sumBT(Node root) {
+        // code here
+        if(root==null) return 0;
+        return root.val+sumBT(root.right)+sumBT(root.left);
+    }
+    static int ProductBT(Node root)
+    {
+        if(root==null) return 1;
+        return root.val*ProductBT(root.left)*ProductBT(root.right);
+    }
 }
+
