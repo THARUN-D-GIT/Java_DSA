@@ -10,23 +10,33 @@ class pair{
 }
 public class LevelOrderTraversal {
     static void main(String[] args) {
-        Node root1 = new Node(1);
-        Node node2 = new Node(2);
-        Node node3 = new Node(3);
-        Node node4 = new Node(4);
-        Node node5 = new Node(5);
-        Node node6 = new Node(6);
-        Node node7 = new Node(7);
+        Node a=new Node(1);
+        Node b=new Node(2);
+        Node c=new Node(3);
+        Node d=new Node(4);
+        Node e=new Node(5);
+        Node f=new Node(6);
+        Node g=new Node(7);
+        a.left=b;a.right=c;
+        b.left=d;b.right=e;
+        c.left=f;c.right=g;
 
-        root1.left = node2;
-        root1.right = node3;
+        //for LC
+        TreeNode root1 = new TreeNode(1);
+        root1.left = new TreeNode(2);
+        root1.right = new TreeNode(3);
 
-        node2.left = node4;
-        node3.right = node5;
+        root1.left.left = new TreeNode(4);
+        root1.left.left.left = new TreeNode(5);
+        root1.left.left.right = new TreeNode(6);
 
-        node4.right = node6;
-        node6.right = node7;
-        levelOrder(root1);
+        root1.right.left = new TreeNode(7);
+        root1.right.right = new TreeNode(8);
+        root1.right.right.right = new TreeNode(9);
+
+
+        levelOrder(a);
+        System.out.println(levelOrder(root1));
 
     }
     static void levelOrder(Node root) {
@@ -58,5 +68,37 @@ public class LevelOrderTraversal {
         }
         System.out.println();
 
+    }
+    public static List<List<Integer>> levelOrder(TreeNode root) {
+
+        List<List<Integer>> ans = new ArrayList<>();
+
+        if (root == null)
+            return ans;
+
+        Queue<TreeNode> q = new LinkedList<>();
+        q.add(root);
+
+        while (!q.isEmpty()) {
+
+            int size = q.size();
+            List<Integer> level = new ArrayList<>();
+
+            for (int i = 0; i < size; i++) {
+
+                TreeNode node = q.poll();
+                level.add(node.val);
+
+                if (node.left != null)
+                    q.add(node.left);
+
+                if (node.right != null)
+                    q.add(node.right);
+            }
+
+            ans.add(level);
+        }
+
+        return ans;
     }
 }
