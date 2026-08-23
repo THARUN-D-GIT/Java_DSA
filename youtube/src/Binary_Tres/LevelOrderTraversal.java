@@ -37,6 +37,7 @@ public class LevelOrderTraversal {
 
         levelOrder(a);
         System.out.println(levelOrder(root1));
+        Nthlevel(a,0,2);
 
     }
     static void levelOrder(Node root) {
@@ -100,5 +101,12 @@ public class LevelOrderTraversal {
         }
 
         return ans;
+    }
+    //n th level printing of elements
+    static void Nthlevel(Node root,int level,int k){
+        if(root==null) return;
+        if(level==k) System.out.print(root.val+" ");
+        Nthlevel(root.left,level+1,k);
+        Nthlevel(root.right,level+1,k);
     }
 }
