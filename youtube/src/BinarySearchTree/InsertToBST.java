@@ -74,6 +74,14 @@ It's guaranteed that val does not exist in the original BST.
         attach(root,val);
         return root;
 
+        //Method 2
+        //without helper function
+//        if(root==null) return new TreeNode(val);
+//        else if(root.val<val) root.right=insertIntoBST(root.right,val);
+//        else  root.left=insertIntoBST(root.left,val);
+//        return root;
+
+
     }
    static  void attach(TreeNode root,int val)
     {
