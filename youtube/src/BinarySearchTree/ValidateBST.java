@@ -1,6 +1,16 @@
 package BinarySearchTree;
 import java.util.*;
+class pair{
+    long max;
+    long min;
+    pair(long max,long min)
+    {
+        this.max=max;
+        this.min=min;
+    }
+}
 public class ValidateBST {
+    static boolean flag2;
     static boolean flag;
     static void main(String[] args) {
         /*
@@ -68,6 +78,9 @@ The number of nodes in the tree is in the range [1, 104].
 
         System.out.println("is root is valid BST?: "+isValidBST(root));
         System.out.println("is root2 is valid BST?: "+isValidBST(root2));
+        System.out.println("answers using max min approach: ");
+        System.out.println("is root is valid BST?: "+isValidBST_2(root));
+        System.out.println("is root2 is valid BST?: "+isValidBST_2(root2));
 
 
 
@@ -88,4 +101,30 @@ The number of nodes in the tree is in the range [1, 104].
         arr.add(root.val);
         inorder(root.right,arr);
     }
+    public static boolean isValidBST_2(TreeNode root)
+    {
+        flag2=true;
+        maxmin(root);
+        return flag2;
+    }
+    static pair maxmin(TreeNode root)
+    {
+        if (root == null)
+            return new pair(Long.MIN_VALUE, Long.MAX_VALUE);
+
+        pair left = maxmin(root.left);
+        pair right = maxmin(root.right);
+
+        long max = Math.max(root.val, Math.max(left.max, right.max));
+        long min = Math.min(root.val, Math.min(left.min, right.min));
+
+        if (left.max >= root.val || right.min <= root.val)
+            flag2 = false;
+
+        return new pair(max, min);
+    }
+    /*
+    to counter when when one of the child is actual Int max or min use long
+
+        */
 }
