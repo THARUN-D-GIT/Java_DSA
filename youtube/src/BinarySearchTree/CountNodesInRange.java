@@ -1,6 +1,6 @@
 package BinarySearchTree;
 // Binary Tree Node Structure
-class Node {
+ class Node {
     int data;
     Node left, right;
 
