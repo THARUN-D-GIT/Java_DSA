@@ -1,26 +1,6 @@
 package BinarySearchTree;
-class Quad{
-    int max;
-    int min;
-    int sum;
-    int size;
-    Quad(int max,int min,int sum,int size){
-        this.max=max;
-        this.min=min;
-        this.sum=sum;
-        this.size=size;
 
-    }
-}
-class Node2 {
-    int data;
-    Node2 left, right;
 
-    public Node2(int d) {
-        data = d;
-        left = right = null;
-    }
-}
 
 
 

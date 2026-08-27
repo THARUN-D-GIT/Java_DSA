@@ -1,14 +1,4 @@
 package BinarySearchTree;
-class node {
-    int val;
-    node left;
-    node right;
-
-    node(int val) {
-        this.val = val;
-        left = right = null;
-    }
-}
 
 public class Max_Min_In_BST {
     static void main(String[] args) {

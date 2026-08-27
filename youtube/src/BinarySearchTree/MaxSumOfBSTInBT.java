@@ -1,12 +1,12 @@
 package BinarySearchTree;
 import java.util.*;
-class quad {
+class quad_2 {
     long max;
     long min;
     long sum;
     boolean bst;
 
-    quad(long max, long min, long sum, boolean bst) {
+    quad_2(long max, long min, long sum, boolean bst) {
         this.max = max;
         this.min = min;
         this.sum = sum;
@@ -68,13 +68,13 @@ public class MaxSumOfBSTInBT {
         return (int) max_sum;
     }
 
-    static quad helper(TreeNode root) {
+    static quad_2 helper(TreeNode root) {
 
         if (root == null)
-            return new quad(Long.MIN_VALUE, Long.MAX_VALUE, 0, true);
+            return new quad_2(Long.MIN_VALUE, Long.MAX_VALUE, 0, true);
 
-        quad lst = helper(root.left);
-        quad rst = helper(root.right);
+        quad_2 lst = helper(root.left);
+        quad_2 rst = helper(root.right);
 
         long max = Math.max(root.val, Math.max(lst.max, rst.max));
         long min = Math.min(root.val, Math.min(lst.min, rst.min));
@@ -89,7 +89,7 @@ public class MaxSumOfBSTInBT {
         if (bst)
             max_sum = Math.max(sum, max_sum);
 
-        return new quad(max, min, sum, bst);
+        return new quad_2(max, min, sum, bst);
     }
 
     // Print tree in inorder
