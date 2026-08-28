@@ -58,6 +58,7 @@ public class MaxSumOfBSTInBT {
         printInorder(root);
 
         System.out.println();
+        //Note use class name capital only
 
         System.out.println("Maximum Sum BST = " + maxSumBST(root));
 
