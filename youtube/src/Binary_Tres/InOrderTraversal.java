@@ -32,5 +32,38 @@ public class InOrderTraversal {
         c.left = f;
         c.right = g;
         System.out.println(inorderTraversal(a));
+        System.out.println("using method 2:");
+        System.out.println(inorderTraversal_2(a));
+    }
+    //Method 2 iterative way
+    public static  List<Integer> inorderTraversal_2(TreeNode root) {
+        List<Integer> ans=new ArrayList<>();
+        Stack<TreeNode> st=new Stack<>();
+        if(root==null) return ans;
+        TreeNode cur=root;
+        while(st.size()>0 || cur!=null)
+        {
+            if(cur!=null)
+            {
+                if(cur.left!=null)
+                {
+                    st.push(cur);
+                    cur=cur.left;
+                }
+                else{
+                    //curr.left==null print and go right
+                    ans.add(cur.val);
+                    cur=cur.right;
+                }
+            }
+            //cur.right==null
+            else{
+                TreeNode top=st.pop();
+                ans.add(top.val);
+                cur=top.right;
+            }
+        }
+        return ans;
+
     }
 }
