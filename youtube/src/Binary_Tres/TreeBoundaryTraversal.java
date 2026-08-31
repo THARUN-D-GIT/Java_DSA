@@ -73,6 +73,105 @@ Constraints:
         System.out.println("Boundary Traversal:");
         System.out.println(result);
     }
+    //Method 2 without using recursion
+    /*
+    public ArrayList<Integer> boundaryTraversal(Node root) {
+
+        ArrayList<Integer> ans = new ArrayList<>();
+
+        if (root == null)
+            return ans;
+
+        // Add root
+        ans.add(root.data);
+
+        // Single node
+        if (root.left == null && root.right == null)
+            return ans;
+
+        // Left boundary
+        LeftBound(root.left, ans);
+
+        // Leaf nodes
+        LeafNode(root, ans);
+
+        // Right boundary
+        RightBound(root.right, ans);
+
+        return ans;
+    }
+
+    static void LeftBound(Node root, ArrayList<Integer> ans) {
+
+        while (root != null) {
+
+            // Don't include leaf
+            if (root.left == null && root.right == null)
+                break;
+
+            ans.add(root.data);
+
+            // Prefer left
+            if (root.left != null)
+                root = root.left;
+            else
+                root = root.right;
+        }
+    }
+
+    static void LeafNode(Node root, ArrayList<Integer> ans) {
+
+        if (root == null)
+            return;
+
+        Stack<Node> stack = new Stack<>();
+        stack.push(root);
+
+        while (!stack.isEmpty()) {
+
+            Node curr = stack.pop();
+
+            // Leaf
+            if (curr.left == null && curr.right == null) {
+                ans.add(curr.data);
+                continue;
+            }
+
+            // Right first into stack
+            if (curr.right != null)
+                stack.push(curr.right);
+
+            // Left last so it gets processed first
+            if (curr.left != null)
+                stack.push(curr.left);
+        }
+    }
+
+    static void RightBound(Node root, ArrayList<Integer> ans) {
+
+        ArrayList<Integer> temp = new ArrayList<>();
+
+        while (root != null) {
+
+            // Don't include leaf
+            if (root.left == null && root.right == null)
+                break;
+
+            temp.add(root.data);
+
+            // Prefer right
+            if (root.right != null)
+                root = root.right;
+            else
+                root = root.left;
+        }
+
+        // Reverse right boundary
+        for (int i = temp.size() - 1; i >= 0; i--) {
+            ans.add(temp.get(i));
+        }
+    }
+     */
     public static  ArrayList<Integer> boundaryTraversal(Gnode root) {
         // code here
         ArrayList<Integer> ans=new ArrayList<>();
