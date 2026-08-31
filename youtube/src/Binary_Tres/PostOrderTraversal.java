@@ -33,5 +33,24 @@ public class PostOrderTraversal {
         c.left = f;
         c.right = g;
         System.out.println(postorderTraversal(a));
+        System.out.println("using method 2:");
+        System.out.println(postorderTraversal_2(a));
+    }
+    //method 2 using iterative way
+    public static List<Integer> postorderTraversal_2(TreeNode root) {
+        List<Integer> ans=new ArrayList<>();
+        if(root==null) return ans;
+        Stack<TreeNode> st=new Stack<>();
+        st.push(root);
+        while(!(st.isEmpty()))
+        {
+            TreeNode top=st.pop();
+            ans.add(top.val);
+            if(top.left!=null) st.push(top.left);
+            if(top.right!=null) st.push(top.right);
+        }
+        Collections.reverse(ans);
+        return ans;
+
     }
 }
