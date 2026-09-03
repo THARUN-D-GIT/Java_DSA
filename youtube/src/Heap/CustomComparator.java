@@ -16,7 +16,7 @@ class Student implements Comparable<Student>{
     public int compareTo(Student s)
     {
         //will sort based on rno
-      return Integer.compare(this.rno,s.rno);
+      return Integer.compare(this.rno,s.rno); //or return this.rno-s.rno
         //will sort based on cgpa
        // return Double.compare(this.cgpa,s.cgpa);
         // for descending order reverse the order of s
