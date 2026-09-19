@@ -6,10 +6,10 @@ public class KthLargest {
 
     static class Solution {
         PriorityQueue<Integer> pq;
-        int k;
+        int k; //global k
 
         public Solution(int k, int[] nums) {
-            this.k = k;
+            this.k = k; // initialising global k with local k
             pq = new PriorityQueue<>();
 
             for (int num : nums) {
