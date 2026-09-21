@@ -2,8 +2,11 @@ package HashSetsAndHashMaps;
 import java.util.*;
 
 public class Basics {
+
     //basics of hashsets
     static void main(String[] args) {
+
+
         //Hashset contains unique copy of every element
         /*
         No value will be present twice and if we add also it will be no
@@ -28,6 +31,25 @@ public class Basics {
         hs.add(77);
         System.out.println(hs.size());
         System.out.println(hs);
+
+        /*
+        TreeSet :ordered set
+        insert,delete,search Time complexity will be O(logn)
+        here also we cant add duplicate values
+        main difference is
+
+        Tree set store the element in sorted order
+        and does not allows null values unlike hashset
+
+
+         */
+        TreeSet<Integer> ts = new TreeSet<>(); //Balanced BST
+        ts.add(77);ts.add(36);ts.add(67);ts.add(89);
+        System.out.println(ts);
+        ts.add(77);ts.add(36);ts.add(67);ts.add(89);
+        System.out.println(ts);
+
+
 
 
     }
