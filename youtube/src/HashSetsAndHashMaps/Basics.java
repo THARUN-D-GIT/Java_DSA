@@ -18,6 +18,16 @@ public class Basics {
          */
         HashSet<Integer> hs = new HashSet<>();
         hs.add(77); hs.add(36);hs.add(67);hs.add(89);
+        //Itteartetion can be done only using for each loop
+        for(int elem:hs) System.out.print(elem+" ");
+        //we can`t modify hashset using for each loop
+        /*
+        for(int elem:hs){
+            hs.remove(elem);
+            hs.add(elem*2);
+        }
+        it will give Concurrent modification error
+         */
         //print size
         System.out.println(hs.size());
         System.out.println(hs);
