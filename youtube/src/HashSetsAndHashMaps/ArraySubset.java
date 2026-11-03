@@ -22,8 +22,37 @@ public class ArraySubset {
     }
     public static boolean isSubset(int [] a,int [] b)
     {
+//        HashMap<Integer,Integer> map1 = new HashMap<>();
+//        HashMap<Integer,Integer> map2 = new HashMap<>();
+//        for(int i=0;i<a.length;i++)
+//        {
+//            if(map1.containsKey(a[i])){
+//                int freq=map1.get(a[i]);
+//                map1.put(a[i],freq+1);
+//
+//            }
+//            else{
+//                map1.put(a[i],1);
+//            }
+//        }
+//        for(int elem:b)
+//        {
+//            if(!map1.containsKey(elem)) return false;
+//            if(map2.containsKey(elem)){
+//                map2.put(elem,map2.get(elem)+1);
+//            }
+//            else map2.put(elem,1);
+//        }
+//        for(int map:map2.keySet())
+//        {
+//            int freq=map2.get(map);
+//            int freq1=map1.get(map);
+//            if(freq1<freq) return false;
+//
+//        }
+//        return true;
+        //using one hashmap
         HashMap<Integer,Integer> map1 = new HashMap<>();
-        HashMap<Integer,Integer> map2 = new HashMap<>();
         for(int i=0;i<a.length;i++)
         {
             if(map1.containsKey(a[i])){
@@ -38,18 +67,11 @@ public class ArraySubset {
         for(int elem:b)
         {
             if(!map1.containsKey(elem)) return false;
-            if(map2.containsKey(elem)){
-                map2.put(elem,map2.get(elem)+1);
-            }
-            else map2.put(elem,1);
+            if(map1.get(elem)==0) return false;//basicallt freq=0;
+            map1.put(elem,map1.get(elem)-1);
+            //decresing so that duplicate entry can work on correct frequency
         }
-        for(int map:map2.keySet())
-        {
-            int freq=map2.get(map);
-            int freq1=map1.get(map);
-            if(freq1<freq) return false;
 
-        }
         return true;
     }
 }
